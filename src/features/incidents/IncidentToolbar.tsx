@@ -1,0 +1,2 @@
+import { Download, Plus, RefreshCw } from 'lucide-react';
+export function IncidentToolbar({ onRefresh, refreshing }: { onRefresh: () => void; refreshing: boolean }) { return <div className="page-actions"><button className="button secondary"><Download/> Export</button><button className="button secondary" onClick={onRefresh} disabled={refreshing}><RefreshCw className={refreshing ? 'spin' : ''}/> Refresh</button><button className="button primary"><Plus/> New incident</button></div>; }
