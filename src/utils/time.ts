@@ -1,0 +1,1 @@
+export function relativeTime(timestamp: number) { const minutes = Math.max(1, Math.round((Date.now() - timestamp) / 60000)); return minutes < 60 ? `${minutes}m ago` : minutes < 1440 ? `${Math.round(minutes / 60)}h ago` : `${Math.round(minutes / 1440)}d ago`; }
