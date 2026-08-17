@@ -1,0 +1,10 @@
+export type Workspace = { id: string; name: string; slug: string; accent: string };
+export type Role = 'admin' | 'operator' | 'viewer';
+export type User = { id: string; name: string; email: string; role: Role; avatar: string; status: 'online' | 'away' | 'offline'; workspaceIds: string[] };
+export type Severity = 'critical' | 'high' | 'medium' | 'low';
+export type IncidentStatus = 'open' | 'investigating' | 'monitoring' | 'resolved';
+export type Incident = { id: string; workspaceId: string; number: number; title: string; customer: string; customerTier: 'Enterprise' | 'Growth' | 'Starter'; status: IncidentStatus; severity: Severity; assigneeId: string | null; createdAt: number; updatedAt: number; summary: string; tags: string[]; version: number };
+export type Alert = { id: string; workspaceId: string; title: string; source: string; severity: Severity; createdAt: number; acknowledged: boolean; version: number };
+export type ActivityEvent = { id: string; incidentId: string; kind: 'comment' | 'status' | 'assignment' | 'priority'; actor: string; message: string; createdAt: number; clientId?: string };
+export type Filters = { search: string; statuses: IncidentStatus[]; severities: Severity[]; assignee: string; sort: 'updated-desc' | 'updated-asc' | 'severity'; page: number; pageSize: number };
+export type SavedView = { id: string; workspaceId: string; ownerId: string; name: string; filters: Filters };
