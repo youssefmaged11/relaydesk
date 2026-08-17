@@ -1,0 +1,2 @@
+import { Search, X } from 'lucide-react';
+export function SearchInput({ value, onChange, placeholder = 'Search incidents...' }: { value: string; onChange: (value: string) => void; placeholder?: string }) { return <label className="search-input"><Search/><input aria-label={placeholder} placeholder={placeholder} value={value} onChange={e => onChange(e.target.value)}/>{value && <button aria-label="Clear search" onClick={() => onChange('')}><X/></button>}</label>; }
