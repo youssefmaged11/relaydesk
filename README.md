@@ -49,4 +49,4 @@ scheduler.resolve(a.id);
 await first;
 ```
 
-See [docs/architecture.md](docs/architecture.md) for state ownership and [docs/minerva-task-matrix.md](docs/minerva-task-matrix.md) for the curator-facing issue portfolio.
+See [docs/architecture.md](docs/architecture.md) for state ownership and [docs/task-seeds](docs/task-seeds) for the curator-facing issue portfolio.
