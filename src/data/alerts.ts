@@ -1,0 +1,2 @@
+import type { Alert } from '../types';
+export const alerts: Alert[] = Array.from({ length: 30 }, (_, i) => ({ id: `alert-${i + 1}`, workspaceId: ['ws-northstar','ws-atlas','ws-orbit'][i % 3], title: ['Elevated API error rate','Queue depth threshold exceeded','P95 latency regression','Integration health degraded'][i % 4], source: ['Datadog','Sentry','PagerDuty'][i % 3], severity: i % 5 === 0 ? 'critical' : i % 3 === 0 ? 'high' : 'medium', createdAt: Date.UTC(2026,7,17,12,0) - i * 900_000, acknowledged: i % 4 === 0, version: 1 }));
