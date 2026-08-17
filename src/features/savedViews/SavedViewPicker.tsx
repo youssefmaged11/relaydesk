@@ -1,0 +1,6 @@
+import { useState } from 'react';
+import { Bookmark, ChevronDown, Plus, Trash2 } from 'lucide-react';
+import type { Filters } from '../../types';
+import { SaveViewDialog } from './SaveViewDialog';
+import { useSavedViews } from './useSavedViews';
+export function SavedViewPicker({ workspaceId, ownerId, filters, onLoad }: { workspaceId: string; ownerId: string; filters: Filters; onLoad: (filters: Filters) => void }) { const { views, save, remove } = useSavedViews(workspaceId, ownerId); const [saving, setSaving] = useState(false); return <><details className="saved-picker"><summary><Bookmark/> All incidents <ChevronDown/></summary><div className="popover saved-menu"><span className="menu-label">Saved views</span>{views.length ? views.map(view => <div className="saved-item" key={view.id}><button onClick={() => onLoad(view.filters)}><Bookmark/>{view.name}</button><button aria-label={`Delete ${view.name}`} onClick={() => remove(view.id)}><Trash2/></button></div>) : <p>No saved views yet</p>}<button className="new-view" onClick={() => setSaving(true)}><Plus/> Save current view</button></div></details>{saving && <SaveViewDialog onClose={() => setSaving(false)} onSave={name => { save(name, filters); setSaving(false); }}/>}</>; }
