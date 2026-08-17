@@ -1,0 +1,1 @@
+export { sortIncidents } from './filtering';
