@@ -1,0 +1,4 @@
+import { expect, test } from '@playwright/test';
+test('incident triage surface is operational', async ({ page }) => { await page.goto('/incidents'); await expect(page.getByRole('heading', { name: 'Incidents' })).toBeVisible(); await expect(page.getByRole('table')).toBeVisible(); await expect(page.getByText('Live updates on')).toBeVisible(); });
+test('switches to alerts and team workflows', async ({ page }) => { await page.goto('/incidents'); await page.getByRole('link', { name: /Alerts/ }).click(); await expect(page.getByRole('heading', { name: 'Alerts' })).toBeVisible(); await page.getByRole('link', { name: 'Team' }).click(); await expect(page.getByRole('heading', { name: 'Team & permissions' })).toBeVisible(); });
+test('searches incidents', async ({ page }) => { await page.goto('/incidents'); await page.getByLabel('Search incidents...').fill('payment'); await expect(page.getByText('Payment authorization latency').first()).toBeVisible(); });
